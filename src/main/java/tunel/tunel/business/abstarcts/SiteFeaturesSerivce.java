@@ -6,20 +6,22 @@ import tunel.tunel.core.utilities.results.DataResult;
 import tunel.tunel.core.utilities.results.Result;
 
 import tunel.tunel.entities.concretes.SiteFeatures;
+import tunel.tunel.entities.dto.ProductDteailDto;
+import tunel.tunel.entities.dto.SiteFeaturesAddDto;
 
 public interface SiteFeaturesSerivce {
 
-	DataResult<List<SiteFeatures>> getAll();
+	DataResult<List<ProductDteailDto>> getAll();
 
-	DataResult<SiteFeatures> getAllById(int id);
+	DataResult<ProductDteailDto> getAllById(int id);
 
-	Result Add(SiteFeatures siteFeatures);
+	Result Add(SiteFeaturesAddDto siteFeaturesAddDto ,int productId);
 
 	Result Delete(int id);
 
 	Result update(int id, SiteFeatures siteFeatures);
 
-	DataResult<List<SiteFeatures>> getAllByProductId(int id);
+	DataResult<List<ProductDteailDto>> getAllByProductId(int id);
 
 
 }

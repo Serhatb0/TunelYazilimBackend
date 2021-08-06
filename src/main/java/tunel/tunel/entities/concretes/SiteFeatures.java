@@ -56,6 +56,21 @@ public class SiteFeatures {
 	
 	@Column(name = "created_date")
     private Date createdDate;
+
+
+
+	public SiteFeatures(String technicalSpecifications, String silver, String gold, String diamod, String explanation
+			) {
+		super();
+		this.technicalSpecifications = technicalSpecifications;
+		this.silver = silver;
+		this.gold = gold;
+		this.diamod = diamod;
+		this.explanation = explanation;
+	
+	}
+	
+	
 	
 
 }

@@ -16,9 +16,10 @@ import tunel.tunel.business.abstarcts.NewsNameService;
 
 import tunel.tunel.entities.concretes.NewsName;
 
-@CrossOrigin
+
 @RestController
 @RequestMapping("/api/newsname")
+@CrossOrigin
 public class NewsNameController {
 
 	

@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 import tunel.tunel.business.abstarcts.SiteFeaturesSerivce;
 
 import tunel.tunel.entities.concretes.SiteFeatures;
+import tunel.tunel.entities.dto.SiteFeaturesAddDto;
 
 
 @CrossOrigin
@@ -46,8 +47,8 @@ public class SiteFeaturesController {
 	}
 
 	@PostMapping("/add")
-	public ResponseEntity<?> add(@RequestBody SiteFeatures siteFeatures) {
-		return ResponseEntity.ok(this.siteFeaturesSerivce.Add(siteFeatures));
+	public ResponseEntity<?> add(@RequestBody SiteFeaturesAddDto siteFeaturesAddDto,@RequestParam int productId) {
+		return ResponseEntity.ok(this.siteFeaturesSerivce.Add(siteFeaturesAddDto,productId));
 	}
 
 	@DeleteMapping("/delete")
