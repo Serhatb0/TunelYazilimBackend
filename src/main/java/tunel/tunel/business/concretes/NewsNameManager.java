@@ -14,7 +14,7 @@ import tunel.tunel.core.utilities.results.SuccessDataResult;
 import tunel.tunel.core.utilities.results.SuccessResult;
 import tunel.tunel.dataAccess.abstracts.NewsNameDao;
 import tunel.tunel.entities.concretes.NewsName;
-import tunel.tunel.entities.concretes.Product;
+
 
 
 @Service
@@ -31,7 +31,7 @@ public class NewsNameManager implements NewsNameService {
 
 	@Override
 	public DataResult<List<NewsName>> getAll() {
-		return new SuccessDataResult<List<NewsName>>(this.newsNameDao.findAll());
+		return new SuccessDataResult<List<NewsName>>(this.newsNameDao.getAllByactiveTrue());
 	}
 
 	@Override

@@ -13,5 +13,7 @@ public interface ReferencesDao extends JpaRepository<References, Integer> {
 	References findAllById(int id);
 	
 	Page<References> findByactiveTrue(Pageable pageable);
+	
+	List<References> getAllByactiveTrue();
 
 }

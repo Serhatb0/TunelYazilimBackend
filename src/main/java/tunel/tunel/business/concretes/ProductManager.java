@@ -14,7 +14,7 @@ import tunel.tunel.core.utilities.results.SuccessDataResult;
 import tunel.tunel.core.utilities.results.SuccessResult;
 import tunel.tunel.dataAccess.abstracts.ProductDao;
 import tunel.tunel.entities.concretes.Product;
-import tunel.tunel.entities.concretes.References;
+
 
 @Service
 public class ProductManager implements ProductService{
@@ -30,7 +30,7 @@ public class ProductManager implements ProductService{
 
 	@Override
 	public DataResult<List<Product>> getAll() {
-		return new SuccessDataResult<List<Product>>(this.productDao.findAll());
+		return new SuccessDataResult<List<Product>>(this.productDao.getAllByactiveTrue());
 	}
 
 	@Override

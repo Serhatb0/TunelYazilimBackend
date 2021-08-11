@@ -30,7 +30,7 @@ public class ReferencesManager implements ReferencesService{
 
 	@Override
 	public DataResult<List<References>> getAll() {
-		return new SuccessDataResult<List<References>>(this.referencesDao.findAll());
+		return new SuccessDataResult<List<References>>(this.referencesDao.getAllByactiveTrue());
 	}
 
 	@Override
