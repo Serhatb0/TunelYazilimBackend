@@ -9,8 +9,9 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
@@ -22,9 +23,10 @@ import tunel.tunel.core.utilities.results.ErrorResult;
 import tunel.tunel.core.utilities.results.Result;
 import tunel.tunel.core.utilities.results.SuccessResult;
 import tunel.tunel.entities.concretes.Photo;
+import tunel.tunel.entities.dto.PhotoAddDto;
 
 @RestController
-@RequestMapping("/cloudinarys")
+@RequestMapping("/api/cloudinarys")
 @CrossOrigin
 public class CloudinaryController {
 
@@ -42,10 +44,24 @@ public class CloudinaryController {
 	public DataResult<List<Photo>> getAll() {
 		return this.PhotoService.getAll();
 	}
+	
+	@GetMapping("/getAllProductId")
+	public DataResult<List<Photo>> getAllProductId(int id) {
+		return this.PhotoService.getAllProductId(id);
+	}
+	@GetMapping("/getAllNewsNameId")
+	public DataResult<List<Photo>> getAllNewsNameId(int id) {
+		return this.PhotoService.getAllNewsNameId(id);
+	}
+	@GetMapping("/getAllReferencesId")
+	public DataResult<List<Photo>> getAllReferencesId(int id) {
+		return this.PhotoService.getAllReferencesId(id);
+	}
 
-	@PostMapping("/upload")
-	public Result uploadFile(@RequestParam("file") MultipartFile file, Photo photo) {
-		return this.PhotoService.add(photo, file);
+	@CrossOrigin
+	@RequestMapping(method = RequestMethod.POST, value = "/file/upload")
+	public Result uploadFile(@RequestParam("file") MultipartFile file, PhotoAddDto photoAddDto) {
+		return this.PhotoService.add(photoAddDto, file);
 
 	}
 

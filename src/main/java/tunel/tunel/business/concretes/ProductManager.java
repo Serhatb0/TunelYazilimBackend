@@ -3,6 +3,8 @@ package tunel.tunel.business.concretes;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import tunel.tunel.business.abstarcts.ProductService;
@@ -12,6 +14,7 @@ import tunel.tunel.core.utilities.results.SuccessDataResult;
 import tunel.tunel.core.utilities.results.SuccessResult;
 import tunel.tunel.dataAccess.abstracts.ProductDao;
 import tunel.tunel.entities.concretes.Product;
+import tunel.tunel.entities.concretes.References;
 
 @Service
 public class ProductManager implements ProductService{
@@ -37,6 +40,7 @@ public class ProductManager implements ProductService{
 
 	@Override
 	public Result Add(Product product) {
+		product.setActive(true);
 		this.productDao.save(product);
 		return new SuccessResult("Data Kaydedildi");
 	}
@@ -55,6 +59,23 @@ public class ProductManager implements ProductService{
 		
 		this.productDao.save(product2);
 		return new SuccessResult("Güncellendi");
+	}
+
+	@Override
+	public Result productRejectActive(int id) {
+		Product product = this.productDao.findAllById(id);
+		product.setActive(false);
+		
+		this.productDao.save(product);
+		return new SuccessResult();
+	}
+
+	@Override
+	public DataResult<List<Product>> findByactiveTrue(int pageNo, int pageSize) {
+		Pageable pageable = PageRequest.of(pageNo - 1, pageSize);
+		return new SuccessDataResult<List<Product>>(
+				this.productDao.findByactiveTrue(pageable).getContent(),
+				this.productDao.findByactiveTrue(pageable).getTotalElements() + "");
 	}
 
 	

@@ -45,6 +45,10 @@ public class ReferencesController {
 		return ResponseEntity.ok(this.referencesService.Add(references));
 	}
 
+	@PostMapping("/rejectreferences")
+	public ResponseEntity<?> rejectReferences(@RequestParam int id) {
+		return  ResponseEntity.ok(this.referencesService.referencesRejectActive(id));
+	}
 	@DeleteMapping("/delete")
 	public ResponseEntity<?> Delete(@RequestParam int id) {
 		return ResponseEntity.ok(this.referencesService.Delete(id));
@@ -53,5 +57,10 @@ public class ReferencesController {
 	@PutMapping("/update")
 	public ResponseEntity<?> update(@RequestParam int id, @RequestBody References references) {
 		return ResponseEntity.ok(this.referencesService.update(id, references));
+	}
+	
+	@GetMapping("/findByactiveTrue")
+	ResponseEntity<?> findByactiveTrue(@RequestParam int pageNo, @RequestParam int pageSize) {
+		return  ResponseEntity.ok(this.referencesService.findByactiveTrue(pageNo, pageSize));
 	}
 }

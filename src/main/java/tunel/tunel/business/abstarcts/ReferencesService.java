@@ -18,4 +18,8 @@ public interface ReferencesService {
 	Result Delete(int id);
 
 	Result update(int id, References references);
+
+	Result referencesRejectActive(int id);
+	
+	DataResult<List<References>>findByactiveTrue(int pageNo,int pageSize);
 }

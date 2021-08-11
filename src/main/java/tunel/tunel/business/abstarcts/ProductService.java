@@ -17,6 +17,10 @@ public interface ProductService {
 	Result Delete(int id);
 
 	Result update(int id, Product product);
+	
+	Result productRejectActive(int id);
+
+	DataResult<List<Product>> findByactiveTrue(int pageNo, int pageSize);
 
 
 

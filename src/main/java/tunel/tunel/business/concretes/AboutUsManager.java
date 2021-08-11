@@ -55,7 +55,7 @@ public class AboutUsManager implements AboutUsService{
 	public Result update(int id, AboutUs aboutUs) {
 		AboutUs aboutUs2= this.aboutUsDao.findAllById(id);
 		
-		aboutUs2.setAboutDescription(aboutUs2.getAboutDescription());
+		aboutUs2.setAboutDescription(aboutUs.getAboutDescription());
 		
 	
 		

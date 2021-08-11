@@ -3,6 +3,8 @@ package tunel.tunel.business.concretes;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import tunel.tunel.business.abstarcts.ReferencesService;
@@ -38,6 +40,7 @@ public class ReferencesManager implements ReferencesService{
 
 	@Override
 	public Result Add(References references) {
+		references.setActive(true);
 		this.referencesDao.save(references);
 		return new SuccessResult("Data Kaydedildi");
 	}
@@ -58,6 +61,24 @@ public class ReferencesManager implements ReferencesService{
 		
 		this.referencesDao.save(references2);
 		return new SuccessResult("Güncellendi");
+	}
+
+	@Override
+	public Result referencesRejectActive(int id) {
+		References references = this.referencesDao.findAllById(id);
+		
+		references.setActive(false);
+		
+		this.referencesDao.save(references);
+		return new SuccessResult();
+	}
+
+	@Override
+	public DataResult<List<References>> findByactiveTrue(int pageNo, int pageSize) {
+		Pageable pageable = PageRequest.of(pageNo - 1, pageSize);
+		return new SuccessDataResult<List<References>>(
+				this.referencesDao.findByactiveTrue(pageable).getContent(),
+				this.referencesDao.findByactiveTrue(pageable).getTotalElements() + "");
 	}
 
 }

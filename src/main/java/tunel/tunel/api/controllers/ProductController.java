@@ -49,6 +49,11 @@ public class ProductController {
 		return  ResponseEntity.ok(this.productService.Add(product));
 	}
 	
+	@PostMapping("/rejectProduct")
+	public ResponseEntity<?> rejectProduct(@RequestParam int id) {
+		return  ResponseEntity.ok(this.productService.productRejectActive(id));
+	}
+	
 	@DeleteMapping("/delete")
 	public ResponseEntity<?> Delete(@RequestParam  int id) {
 		return  ResponseEntity.ok(this.productService.Delete(id));
@@ -57,6 +62,12 @@ public class ProductController {
 	@PutMapping("/update")
 	public ResponseEntity<?> update(@RequestParam int id, @RequestBody Product product ) {
 		return  ResponseEntity.ok(this.productService.update(id,product));
+	}
+	
+
+	@GetMapping("/findByactiveTrue")
+	ResponseEntity<?> findByactiveTrue(@RequestParam int pageNo, @RequestParam int pageSize) {
+		return  ResponseEntity.ok(this.productService.findByactiveTrue(pageNo, pageSize));
 	}
 		
 }

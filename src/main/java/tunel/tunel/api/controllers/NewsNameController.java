@@ -43,6 +43,10 @@ public class NewsNameController {
 		return  ResponseEntity.ok(this.newsNameService.getAllById(id));
 	}
 	
+	@PostMapping("/rejectNews")
+	public ResponseEntity<?> rejectNews(@RequestParam int id) {
+		return  ResponseEntity.ok(this.newsNameService.newsRejectActive(id));
+	}
 	@PostMapping("/add")
 	public ResponseEntity<?> add(@RequestBody NewsName newsName) {
 		return  ResponseEntity.ok(this.newsNameService.Add(newsName));
@@ -56,5 +60,10 @@ public class NewsNameController {
 	@PutMapping("/update")
 	public ResponseEntity<?> update(@RequestParam int id, @RequestBody NewsName newsName ) {
 		return  ResponseEntity.ok(this.newsNameService.update(id,newsName));
+	}
+	
+	@GetMapping("/findByactiveTrue")
+	ResponseEntity<?> findByactiveTrue(@RequestParam int pageNo, @RequestParam int pageSize) {
+		return  ResponseEntity.ok(this.newsNameService.findByactiveTrue(pageNo, pageSize));
 	}
 }

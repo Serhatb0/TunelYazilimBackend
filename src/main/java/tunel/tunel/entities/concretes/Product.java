@@ -33,6 +33,10 @@ public class Product {
 	@Column(name = "created_date")
 	 private Date createdDate;
 	
+	
+	@Column(name="active")
+	private Boolean active;
+	
 	@OneToMany(mappedBy = "product")
 	private List<Photo> photos;
 	

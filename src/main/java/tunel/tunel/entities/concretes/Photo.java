@@ -24,6 +24,13 @@ import lombok.NoArgsConstructor;
 @Table(name="photos")
 public class Photo {
 
+	public Photo(String name, String photoUrl, String deleteId) {
+		super();
+		this.name = name;
+		this.photoUrl = photoUrl;
+		this.deleteId = deleteId;
+	}
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="photo_id")

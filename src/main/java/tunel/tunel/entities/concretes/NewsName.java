@@ -36,6 +36,9 @@ public class NewsName {
 	@Column(name = "created_date")
 	 private Date createdDate;
 	
+	@Column(name="active")
+	private Boolean active;
+	
 	@OneToMany(mappedBy = "newsName")
 	private List<Photo> photos;
 

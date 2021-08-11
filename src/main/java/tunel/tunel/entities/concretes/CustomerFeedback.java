@@ -1,15 +1,12 @@
 package tunel.tunel.entities.concretes;
 
-
-
-import java.util.List;
+import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import lombok.AllArgsConstructor;
@@ -20,30 +17,17 @@ import lombok.NoArgsConstructor;
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "reference")
-public class References {
-
+@Table(name = "customer_feedback")
+public class CustomerFeedback {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id")
 	private int id;
 	
+	@Column(name = "cutomer_name")
+	private String cutomerName;
 	
-	@Column(name = "references_name")
-	private String referencesName;
-	
-	@Column(name = "references_description")
-	private String referencesDescription;
-	
-	@Column(name = "references_link")
-	private String referencesLink;
-	
-	@Column(name="active")
-	private Boolean active;
-
-	@OneToMany(mappedBy = "reference")
-	private List<Photo> photos;
-
-
+	@Column(name = "customer_comment")
+	private String customerComment;
 }

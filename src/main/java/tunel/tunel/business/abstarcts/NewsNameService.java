@@ -20,4 +20,8 @@ public interface NewsNameService {
 
 	Result update(int id, NewsName newsName);
 
+	Result newsRejectActive(int id);
+
+	DataResult<List<NewsName>> findByactiveTrue(int pageNo, int pageSize);
+
 }
